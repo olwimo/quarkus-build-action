@@ -1,0 +1,20 @@
+name: 'Build a Quarkus native GraalVM application'
+description: 'Build a Quarkus native GraalVM application'
+branding:
+  icon: 'arrow-down-circle'
+  color: 'purple'
+inputs:
+  outputName:
+    description: Pathname of the executable binary file ouput
+    required: true
+    default: app-runner
+  dockerfilePath:
+    description: Relative path to an optional custom Dockerfile
+    required: true
+    default: /Dockerfile
+runs:
+  using: 'docker'
+  image: 'Dockerfile' 
+  args: 
+    - ${{ inputs.outputName }}
+    - ${{ inputs.dockerfilePath }}

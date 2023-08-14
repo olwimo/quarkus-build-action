@@ -1,0 +1,8 @@
+FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:22.3-java17
+
+USER root
+
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+
+RUN mvn -f /usr/src/app/pom.xml -Pnative clean verify
